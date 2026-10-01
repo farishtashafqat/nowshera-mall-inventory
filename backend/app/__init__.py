@@ -1,0 +1,1 @@
+"""Nowshera Mall Inventory API."""
