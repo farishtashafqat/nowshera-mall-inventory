@@ -23,3 +23,7 @@ async def unhandled_exception_handler(_: Request, __: Exception) -> JSONResponse
 
 
 app.include_router(api_router)
+# Vercel Services forwards the original request path to the FastAPI service.
+# Keep root routes for local development and expose the same API at /api in
+# production without changing endpoint behavior.
+app.include_router(api_router, prefix="/api")

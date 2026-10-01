@@ -1,5 +1,5 @@
 import type { CurrentUser, StaffMember } from '../types/auth'
-const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+const apiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://127.0.0.1:8000' : '/api')
 async function request<T>(path: string, token: string, options: RequestInit = {}): Promise<T> {
   const controller = new AbortController()
   const timeout = window.setTimeout(() => controller.abort(), 15000)
